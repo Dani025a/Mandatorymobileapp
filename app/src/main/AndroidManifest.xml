@@ -10,22 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MandatoryMobileApp">
         <activity
-            android:name="com.example.mandatorymobileapp.UI.fragments.RegisterFragment"
-            android:exported="false" />
-        <activity
-            android:name="com.example.mandatorymobileapp.UI.fragments.LoginFragment"
-            android:exported="false" />
-        <activity
-            android:name="com.example.mandatorymobileapp.UI.fragments.LoginRegisterFragment"
-            android:exported="false" />
-        <activity
-            android:name="com.example.mandatorymobileapp.UI.fragments.List_Fragment"
-            android:exported="false" />
-        <activity
-            android:name="com.example.mandatorymobileapp.UI.fragments.ItemFragment"
-            android:exported="false" />
-        <activity
-            android:name="com.example.mandatorymobileapp.UI.fragments.MainActivity"
+            android:name="com.example.mandatorymobileapp.UI.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

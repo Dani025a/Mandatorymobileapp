@@ -11,18 +11,15 @@ import retrofit2.http.*
 
 class ResaleRepository {
 
-    private val url = "https://anbo-restbookquerystring.azurewebsites.net/api/"
+    private val url = "https://anbo-restresale.azurewebsites.net/api/"
 
-    //"http://anbo-restserviceproviderbooks.azurewebsites.net/Service1.svc/"
     private val itemStoreService: ItemStoreService
     val itemsLiveData: MutableLiveData<List<Item>> = MutableLiveData<List<Item>>()
     val errorMessageLiveData: MutableLiveData<String> = MutableLiveData()
     val updateMessageLiveData: MutableLiveData<String> = MutableLiveData()
 
     init {
-        val build: Retrofit = Retrofit.Builder()
-            .baseUrl(url)
-            .addConverterFactory(GsonConverterFactory.create()).build()
+        val build: Retrofit = Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build()
         itemStoreService = build.create(ItemStoreService::class.java)
         getPosts()
     }
@@ -31,20 +28,18 @@ class ResaleRepository {
         itemStoreService.getAllItems().enqueue(object : Callback<List<Item>> {
             override fun onResponse(call: Call<List<Item>>, response: Response<List<Item>>) {
                 if (response.isSuccessful) {
-                    //Log.d("APPLE", response.body().toString())
                     itemsLiveData.postValue(response.body())
                     errorMessageLiveData.postValue("")
                 } else {
                     val message = response.code().toString() + " " + response.message()
                     errorMessageLiveData.postValue(message)
-                    Log.d("APPLE", message)
+                    Log.d("_________________1", message)
                 }
             }
 
             override fun onFailure(call: Call<List<Item>>, t: Throwable) {
-                //booksLiveData.postValue(null)
                 errorMessageLiveData.postValue(t.message)
-                Log.d("APPLE", t.message!!)
+                Log.d("_________________2", t.message!!)
             }
         })
     }
@@ -53,18 +48,18 @@ class ResaleRepository {
         itemStoreService.saveItem(item).enqueue(object : Callback<Item> {
             override fun onResponse(call: Call<Item>, response: Response<Item>) {
                 if (response.isSuccessful) {
-                    Log.d("APPLE", "Added: " + response.body())
+                    Log.d("_________________3", "Added: " + response.body())
                     updateMessageLiveData.postValue("Added: " + response.body())
                 } else {
                     val message = response.code().toString() + " " + response.message()
                     errorMessageLiveData.postValue(message)
-                    Log.d("APPLE", message)
+                    Log.d("_________________4", message)
                 }
             }
 
             override fun onFailure(call: Call<Item>, t: Throwable) {
                 errorMessageLiveData.postValue(t.message)
-                Log.d("APPLE", t.message!!)
+                Log.d("_________________5", t.message!!)
             }
         })
     }
@@ -73,18 +68,18 @@ class ResaleRepository {
         itemStoreService.deleteItem(id).enqueue(object : Callback<Item> {
             override fun onResponse(call: Call<Item>, response: Response<Item>) {
                 if (response.isSuccessful) {
-                    Log.d("APPLE", "Updated: " + response.body())
+                    Log.d("_________________6", "Updated: " + response.body())
                     updateMessageLiveData.postValue("Deleted: " + response.body())
                 } else {
                     val message = response.code().toString() + " " + response.message()
                     errorMessageLiveData.postValue(message)
-                    Log.d("APPLE", message)
+                    Log.d("_________________7", message)
                 }
             }
 
             override fun onFailure(call: Call<Item>, t: Throwable) {
                 errorMessageLiveData.postValue(t.message)
-                Log.d("APPLE", t.message!!)
+                Log.d("_________________8", t.message!!)
             }
         })
     }
@@ -93,18 +88,18 @@ class ResaleRepository {
         itemStoreService.updateItem(item.id, item).enqueue(object : Callback<Item> {
             override fun onResponse(call: Call<Item>, response: Response<Item>) {
                 if (response.isSuccessful) {
-                    Log.d("APPLE", "Updated: " + response.body())
+                    Log.d("_________________9", "Updated: " + response.body())
                     updateMessageLiveData.postValue("Updated: " + response.body())
                 } else {
                     val message = response.code().toString() + " " + response.message()
                     errorMessageLiveData.postValue(message)
-                    Log.d("APPLE", message)
+                    Log.d("_________________10", message)
                 }
             }
 
             override fun onFailure(call: Call<Item>, t: Throwable) {
                 errorMessageLiveData.postValue(t.message)
-                Log.d("APPLE", t.message!!)
+                Log.d("_________________11", t.message!!)
             }
         })
     }

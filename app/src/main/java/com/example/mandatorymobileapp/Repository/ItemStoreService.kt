@@ -5,18 +5,18 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface  ItemStoreService {
-    @GET("items")
+    @GET("resaleitems")
     fun getAllItems(): Call<List<Item>>
 
-    @GET("items/{itemId}")
-    fun getItemById(@Path("itemId") itemId: Int): Call<Item>
+    @GET("resaleitems/{id}")
+    fun getItemById(@Path("resaleitemId") resaleitemId: Int): Call<Item>
 
-    @POST("items")
+    @POST("resaleitems")
     fun saveItem(@Body item: Item): Call<Item>
 
-    @DELETE("items/{id}")
+    @DELETE("resaleitems/{id}")
     fun deleteItem(@Path("id") id: Int): Call<Item>
 
-    @PUT("items/{id}")
+    @PUT("resaleitems/{id}")
     fun updateItem(@Path("id") id: Int, @Body item: Item): Call<Item>
 }

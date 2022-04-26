@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/list_Fragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.mandatorymobileapp.UI.fragments.LoginFragment"
+        android:label="register_fragment"
+        tools:layout="@layout/register_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_list_Fragment"
+            app:destination="@id/list_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.mandatorymobileapp.UI.fragments.RegisterFragment"
+        android:label="RegisterFragment" >
+        <action
+            android:id="@+id/action_registerFragment_to_list_Fragment"
+            app:destination="@id/list_Fragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/list_Fragment"
+        android:name="com.example.mandatorymobileapp.UI.fragments.List_Fragment"
+        android:label="list_fragment"
+        tools:layout="@layout/list_fragment" >
+        <action
+            android:id="@+id/action_list_Fragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
+        <action
+            android:id="@+id/action_list_Fragment_to_addItemFragment"
+            app:destination="@id/addItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="com.example.mandatorymobileapp.UI.fragments.ItemFragment"
+        android:label="item_fragment"
+        tools:layout="@layout/item_fragment" >
+        <action
+            android:id="@+id/action_itemFragment_to_list_Fragment"
+            app:destination="@id/list_Fragment" />
+        <action
+            android:id="@+id/action_itemFragment_to_addItemFragment"
+            app:destination="@id/addItemFragment" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/addItemFragment"
+        android:name="com.example.mandatorymobileapp.UI.fragments.AddItemFragment"
+        android:label="AddItemFragment" >
+        <action
+            android:id="@+id/action_addItemFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
+        <action
+            android:id="@+id/action_addItemFragment_to_list_Fragment"
+            app:destination="@id/list_Fragment" />
+    </fragment>
+</navigation>
